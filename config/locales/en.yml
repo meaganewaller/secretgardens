@@ -30,4 +30,73 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  account:
+    subscription: "Subscription"
+    profile:
+      title: "Profile"
+      email: "Email"
+      password: "Password"
+      save: "Save"
+    billing_status: "Billing Status"
+    active: "Active"
+    inactive: "Inactive"
+    manage: "Manage"
+    index:
+      heading:
+        title: "My Account"
+  dashboard:
+    index:
+      heading:
+        title: "Your Dashboard"
+        description: "Everything you care about, at a glance."
+  blog_posts:
+    index:
+      heading:
+        title: "The Weblog"
+        description: "All the posts"
+      meta:
+        title: "the weblog"
+        description: "all blog posts"
+  "Secret Gardens": "secret gardens"
+  title: "secret gardens"
+  menu: "Menu"
+  close: "Close"
+  impersonator:
+    on: Impersonating
+    back_link: "Back to admin"
+  header:
+    menu:
+      account: "Account"
+      admin: "Admin"
+      blog: "Blog"
+      contact: "Contact"
+      dashboard: "Dashboard"
+      login: "Log in"
+      logout: "Log out"
+      projects: "Projects"
+      signup: "Sign up"
+  pages:
+    terms:
+      meta:
+        title: "terms of service"
+        description: "read our terms of service"
+    privacy:
+      meta:
+        title: "privacy policy"
+        description: "read  our privacy policy"
+    home:
+      meta:
+        title: "welcome!"
+        description: "these are the lunar valleys in my mind. do you have the key?"
+      heading: "Heading"
+      subheading: "Subheading"
+      details: "Details"
+      sign_up:
+        label: "Sign up label"
+        sr_label: "Email"
+        placeholder: "Enter your email to get started"
+        button:
+          variation_1: "Start Free"
+          variation_2: "Get Started"
+        disclaimer: "We care about the protection of your data. Read our"
+        privacy_policy: "Privacy Policy"

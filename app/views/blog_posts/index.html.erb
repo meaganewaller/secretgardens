@@ -1,6 +1,6 @@
-<% meta title: "Blog posts", description: "All blog posts from #{Rails.application.credentials.company_name}." %>
+<% meta title: "#{I18n.t('blog_posts.index.meta.title')}", description: "#{I18n.t('blog_posts.index.meta.description')}" %>
 
-<%= render partial: "shared/heading", locals: { title: 'Blog Posts', description: '' } %>
+<%= render partial: "shared/heading", locals: { title: "#{I18n.t('blog_posts.index.heading.title')}", description: "#{I18n.t('blog_posts.index.heading.description')}" } %>
 
 <% if current_user&.admin? %>
   <%# New blog post button, only accessibly by admins %>

@@ -1,26 +1,26 @@
-<%= render partial: "shared/heading", locals: { title: 'My Account' } %>
+<%= render partial: "shared/heading", locals: { title: "#{I18n.t('account.index.heading.title')}" } %>
 
 <div class="max-w-xl mx-auto sm:py-12">
-  <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900">Subscription</h3>
+  <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900"><%= I18n.t("account.subscription") %></h3>
   <div class="flex">
     <div class="flex-auto">
-      Billing Status: <%= current_user.paying_customer? ? 'Active' : 'Inactive' %><br>
+      <%= I18n.t("account.billing_status") %>: <%= current_user.paying_customer? ? "#{I18n.t('account.active')}" : "#{I18n.t('account.inactive')}" %><br>
     </div>
     <div class="flex-shrink">
-      <%= button_to 'Manage >>', billing_portal_index_path, method: :post, data: { turbo: false }, class: "font-medium text-primary-500" %>
+      <%= button_to "#{I18n.t('account.manage')} >>", billing_portal_index_path, method: :post, data: { turbo: false }, class: "font-medium text-primary-500" %>
     </div>
   </div>
 
   <%= form_for(current_user, url: account_path(current_user.id), method: 'patch', html: {class: "mt-8", autocomplete: 'off'}) do |f| %>
     <div>
-      <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900">Profile</h3>
+      <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900"><%= I18n.t("account.profile.title") %></h3>
       <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
-        <label for="email" class="block text-xs font-medium text-gray-900">Email</label>
+        <label for="email" class="block text-xs font-medium text-gray-900"><%= I18n.t("account.profile.email") %></label>
         <input type="text" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="<%= current_user.email %>">
       </div>
 
       <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
-        <label for="password" class="block text-xs font-medium text-gray-900">Password</label>
+        <label for="password" class="block text-xs font-medium text-gray-900"><%= I18n.t("account.profile.password") %></label>
         <input type="password" autocomplete="new-password" name="user[password]" id="user_password" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
       </div>
 
@@ -31,7 +31,7 @@
             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
           </svg>
         </span>
-        Save
+        <%= I18n.t("account.profile.save") %>
       </button>
     </div>
   <% end %>
