@@ -36,6 +36,7 @@ en:
       title: "Profile"
       email: "Email"
       password: "Password"
+      username: "Username"
       save: "Save"
     billing_status: "Billing Status"
     active: "Active"
