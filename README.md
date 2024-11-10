@@ -1,9 +1,9 @@
-# Speedrail
+# Secretgardens
 a Rails 7 template by [@ryanckulp](https://twitter.com/ryanckulp), created to ship SaaS apps quickly. 
 
-learn to build 3 projects with Speedrail at [24 Hour MVP](https://founderhacker.com/24-hour-mvp), or check out the [premium documentation](https://gitpaywall.com/p/ryanckulp/speedrail-docs).
+learn to build 3 projects with Secretgardens at [24 Hour MVP](https://founderhacker.com/24-hour-mvp), or check out the [premium documentation](https://gitpaywall.com/p/ryanckulp/speedrail-docs).
 
-**Speedrail features**
+**Secretgardens features**
 * rich text blog CMS
 * embedded subscription payment portal via [Stripe Checkout](https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=embedded-form)
 * built-in referral marketing via [Rewardful](https://www.rewardful.com/?via=speedrail)
@@ -35,20 +35,20 @@ learn to build 3 projects with Speedrail at [24 Hour MVP](https://founderhacker.
 3. inspect, then save/close the generated credentials file
 4. `cd new_app_name`
 
-**For detailed, step by step tutorials to using Speedrail, get lifetime access to the [Speedrail Docs](https://gitpaywall.com/p/ryanckulp/speedrail-docs) for a one-time fee of $49.**
+**For detailed, step by step tutorials to using Secretgardens, get lifetime access to the [Secretgardens Docs](https://gitpaywall.com/p/ryanckulp/speedrail-docs) for a one-time fee of $49.**
 
 ## Development
 ```sh
 bin/dev # uses foreman to boot server, frontend, and bg job queue
 ```
 
-To sync your project with the latest Speedrail improvements:
+To sync your project with the latest Secretgardens improvements:
 
 ```sh
 # one time only
 git remote add speedrail https://github.com/ryanckulp/speedrail.git
 
-# when you notice Speedrail updates on GitHub
+# when you notice Secretgardens updates on GitHub
 git pull
 git fetch speedrail
 git merge speedrail/master --allow-unrelated-histories
