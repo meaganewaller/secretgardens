@@ -56,14 +56,9 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.raise_errors_for_deprecations!
   # helper to leverage Devise in Request specs, just invoke sign_in(user)
   config.include Devise::Test::IntegrationHelpers, type: :request
-
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # TODO: update fixture_path to below (not yet supported by Rspec)
-  # config.fixture_paths << "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -75,7 +70,9 @@ RSpec.configure do |config|
     # allow(Rails.application.credentials).to receive(:admin_email).and_return('support@speedrail.com')
     # allow(Rails.application.credentials).to receive(:company_name).and_return('Speedrail')
     allow(Rails.application.credentials).to receive(:base_url).and_return('https://speedrail.com')
-    allow(Rails.application.credentials).to receive(:stripe).and_return(OpenStruct.new(api_key: 'sk_asdf', publishable_key: 'pk_asdf', product_price_id: 'pi_asdf'))
+    credentials_struct = Struct.new(:api_key, :publishable_key, :product_price_id)
+    stripe_creds = credentials_struct.new('sk_asdf', 'pk_asdf', 'pi_asdf')
+    allow(Rails.application.credentials).to receive(:stripe).and_return(stripe_creds)
     allow_any_instance_of(BillingPortalController).to receive(:create_checkout).and_return({ client_secret: 'qwerty' }.to_json)
   end
 

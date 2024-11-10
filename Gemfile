@@ -55,7 +55,7 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails', '7.0.1'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-callback-matchers'
   gem 'shoulda-matchers'
@@ -63,3 +63,5 @@ group :test do
   gem 'simplecov-tailwindcss'
   gem 'webmock'
 end
+
+gem "ostruct", "~> 0.6.1"

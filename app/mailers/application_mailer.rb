@@ -6,7 +6,7 @@ class ApplicationMailer < ActionMailer::Base
 
   # Default to mailer views in `views/mailers`
   def self.inherited(subclass)
-    super(subclass)
+    super
     subclass.default template_path: "mailers/#{subclass.name.to_s.underscore}"
   end
 
