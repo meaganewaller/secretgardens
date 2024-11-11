@@ -1,0 +1,44 @@
+---
+en:
+  views:
+    dashboard:
+      meta:
+        title: Dashboard - %{site}
+      heading: Dashboard
+      actions:
+        mobile:
+          posts: Posts (%{num})
+        posts: Posts
+      blog_post:
+        heading:
+          text_html: "%{title}"
+        published: 'Published:'
+        published_html: 'Published: %{date}'
+        edited: 'Edited:'
+        edited_html: 'Edited: %{date}'
+        draft: Draft
+        delete: Delete
+        manage:
+          aria_label: "Manage post: %{title}"
+          text: Manage
+        edit:
+          aria_label: "Edit post: %{title}"
+          text: Edit
+        more:
+          title: "More options for post: %{title}"
+          icon: More...
+        author: Author
+        icon: Details
+        author_is: 'AUTHOR: '
+        save: Save
+        submit: Submit author change
+      blog_posts:
+        heading: Posts
+        option:
+          creation-desc: Recently Created
+          published-desc: Recently Published
+          aria_label: Sort By
+        personal: Personal
+        empty:
+          desc: This is where you can manage your posts, but you haven't written anything yet.
+          new: Write your first post now

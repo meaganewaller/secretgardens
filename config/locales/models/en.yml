@@ -1,0 +1,23 @@
+---
+en:
+  models:
+    application_record:
+  blog_post:
+    a_post_by: A post by %{user_name}
+    is_too_long: is too long
+    invalid_date: must be entered in DD/MM/YYYY format with current or past date
+    published: Published
+    unique_url: has already been taken. Email %{email} for further details.
+    future_or_current_published_at: only future or current published_at allowed
+    immutable_published_at: updating published_at for posts that have already been published is not allowed
+  user:
+    could_not_send: confirmation could not be sent. %{e_message}
+    password_not_matched: don't match password confirmation
+    has_been_banished: has been banished
+    user_could_not_be_saved: User could not be saved. %{e_message}
+  users:
+    deleted_user:
+      name: '[Deleted User]'
+    setting:
+      invalid_hex: is not a valid hex color
+      invalid_rss: is not a valid RSS/Atom feed

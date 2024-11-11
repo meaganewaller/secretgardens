@@ -1,0 +1,35 @@
+---
+en:
+  helpers:
+    label:
+      user:
+        name: Name
+        email: Email
+        username: Username
+        profile_image: Profile image
+    placeholder:
+      user:
+        name: Betty Dylan
+        email: betty.dylan@example.com
+        username: youputmeon
+    application_helper:
+      app_logo: App logo
+      required: Required
+      subtitle:
+        week: Top posts this week
+        month: Top posts this month
+        year: Top posts this year
+        infinity: All posts
+        lastest: Latest posts
+      title_text: "%{title} - %{timeframe}"
+    blog_posts_helper:
+      logo: "%{service_name} logo"
+      most_comments: Most Comments
+      most_reactions: Most Reactions
+      most_views: Most Views
+      recently_created: Recently Created
+      recently_published: Recently Publihed
+    admin:
+      user_helper:
+        today: Today, %{date}
+        yesterday: Yesterday, %{date}

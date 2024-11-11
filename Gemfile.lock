@@ -212,6 +212,9 @@ GEM
       has_scope (>= 0.6)
       railties (>= 6.0)
       responders (>= 2)
+    inline_svg (1.10.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.7.2)
     irb (1.14.1)
       rdoc (>= 4.0.0)
@@ -472,6 +475,9 @@ GEM
     unicode-display_width (2.6.0)
     uri (1.0.1)
     useragent (0.16.10)
+    validate_url (1.0.15)
+      activemodel (>= 3.0.0)
+      public_suffix
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -523,6 +529,7 @@ DEPENDENCIES
   httparty
   image_processing (>= 1.2)
   importmap-rails
+  inline_svg
   jbuilder
   letter_opener
   metamagic
@@ -554,6 +561,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
+  validate_url (~> 1.0)
   web-console
   webmock
 

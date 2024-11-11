@@ -1,0 +1,4 @@
+<%= link_to root_path, class: "site-logo", aria: { label: "#{t('views.main.aria_home', community: nil)}"} do %>
+  <%= image_tag "logo-darkmode", alt: "Dark Mode Secret Gardens Logo", class: "dark:flex hidden h-20 w-full" %>
+  <%= image_tag "logo-lightmode", alt: "Light Mode Secret Gardens Logo", class: "flex dark:hidden h-20 w-full" %>
+<% end %>

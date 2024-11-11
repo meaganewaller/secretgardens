@@ -7,9 +7,9 @@ feature 'Root page', js: true do
 
   scenario 'Root page should work' do
     expect(page).to have_text 'Contact'
-    expect(page).to have_text 'Login'
-    expect(page).to have_text 'Signup'
+    expect(page).to have_text 'Log in'
+    expect(page).to have_text 'Sign up'
 
-    expect(page).to_not have_text 'Logout'
+    expect(page).to_not have_text 'Log out'
   end
 end

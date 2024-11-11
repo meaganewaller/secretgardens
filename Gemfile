@@ -65,3 +65,6 @@ group :test do
 end
 
 gem "ostruct", "~> 0.6.1"
+
+gem "inline_svg"
+gem "validate_url", "~> 1.0"

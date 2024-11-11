@@ -1,7 +1,7 @@
 module ApplicationHelper
   def nav_link_classes(path = nil)
-    defaults = 'ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
-    defaults.gsub!('gray', 'black').gsub!('-medium', '-bold') if request.path == "/#{path}"
+    defaults = 'ml-8 whitespace-nowrap text-base font-medium text-sm/6 text-primary-800 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-100'
+    defaults.gsub!('primary', 'secondary').gsub!('-medium', '-bold') if request.path == "/#{path}"
     defaults
   end
 
@@ -9,6 +9,10 @@ module ApplicationHelper
     defaults = 'text-green-500 bg-green-100'
     defaults.gsub!('green', 'red') if flash[:alert].present?
     defaults
+  end
+
+  def nav_icon_classes
+    'w-6 h-6 ml-3 whitespace-nowrap inline-flex sm:ml-8 align-middle font-medium text-yellow-600 dark:text-primary-500'
   end
 
   def flash_icon
@@ -19,5 +23,9 @@ module ApplicationHelper
 
   def script_tags
     @script_tags ||= ScriptTag.enabled
+  end
+
+  def user_logged_in_status
+    user_signed_in? ? "logged-in" : "logged-out"
   end
 end

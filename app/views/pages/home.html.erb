@@ -3,71 +3,254 @@
   description: "#{I18n.t('pages.home.meta.description')}"
 ) %>
 
-<!-- This example section is from the tailwindui.com Hero Section component library -->
-<div class="relative bg-white overflow-hidden">
+<div class="relative mt-10">
+  <!-- Hero: Start -->
+  <section class="relative bg-primary-700">
+    <div class="absolute inset-0">
+      <div class="absolute inset-y-0 left-0 w-1/2 bg-primary-100"></div>
+    </div>
 
-  <div class="relative pt-6 pb-16 sm:pb-24 lg:pb-32">
-    <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
-      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-        <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-          <h1>
-            <!-- <span class="block text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base">Coming soon</span> -->
-            <span class="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
-              <span class="block text-gray-900"><%= I18n.t('pages.home.heading') %></span>
-              <span class="block text-primary-600"><%= I18n.t('pages.home.subheading') %></span>
-            </span>
-          </h1>
-          <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-            <%= I18n.t('pages.home.details') %>
-          </p>
-          <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
-            <p class="text-base font-medium text-gray-900">
-              <%= I18n.t('pages.home.sign_up.label') %>
-            </p>
-            <form action="<%= new_user_registration_path %>" method="GET" class="mt-3 sm:flex">
-              <label for="email" class="sr-only">
-                <%= I18n.t('pages.home.sign_up.sr_label') %>
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                class="block w-full py-3 text-base rounded-md placeholder-gray-500 shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:flex-1 border-gray-300"
-                placeholder="<%= I18n.t('pages.home.sign_up.placeholder') %>"
-              >
-              <button type="submit" class="mt-3 w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
-                <%= ab_test(:cta, "#{I18n.t('pages.home.sign_up.button.variation_1')}", "#{I18n.t('pages.home.sign_up.button.variation_2')}") %>
-              </button>
-            </form>
-            <p class="mt-3 text-sm text-gray-500">
-              <%= I18n.t("pages.home.sign_up.disclaimer") %>
-              <%= link_to "#{I18n.t('pages.home.sign_up.privacy_policy')}", privacy_path, class: 'font-medium text-gray-900 underline' %>
-            </p>
-          </div>
-        </div>
-        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-          <svg class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 scale-75 origin-top sm:scale-100 lg:hidden" width="640" height="784" fill="none" viewBox="0 0 640 784" aria-hidden="true">
-            <defs>
-              <pattern id="4f4f415c-a0e9-44c2-9601-6ded5a34a13e" x="118" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="white" />
-              </pattern>
-            </defs>
-            <rect y="72" width="640" height="640" class="text-gray-50" fill="white" />
-            <rect x="118" width="404" height="784" fill="url(#4f4f415c-a0e9-44c2-9601-6ded5a34a13e)" />
-          </svg>
-          <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-            <button type="button" class="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-              <img class="w-full" src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
-              <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
-                <svg class="h-20 w-20 text-primary-500" fill="white" viewBox="0 0 84 84">
-                  <circle opacity="0.9" cx="42" cy="42" r="42" fill="white" />
-                  <path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z" />
-                </svg>
-              </div>
-            </button>
+    <div class="relative mx-auto max-w-7xl lg:grid lg:grid-cols-2">
+      <div class="flex items-end px-4 pb-16 bg-primary-100 pt-28 sm:px-6 lg:px-8 lg:pb-24 xl:pr-12">
+        <div class="max-w-lg mx-auto lg:mx-0">
+          <p class="text-5xl sm:text-6xl lg:text-7xl">🌼</p>
+          <h1 class="mt-10 text-3xl text-primary-900 sm:text-4xl lg:text-5xl font-sans">secret gardens in my mind.</h1>
+          <p class="mt-6 text-xl sm:text-2xl lg:text-3xl font-serif italic font-normal leading-7 text-primary-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vehicula massa in enim luctus. Rutrum arcu.</p>
+          <div class="relative inline-flex mt-10 group">
+            <div class="absolute transition-all duration-1000 opacity-70 inset-0 bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+
+            <%= link_to "Read Exclusive Blog", "#", class: "inline-flex relative items-center justify-center w-full sm:w-auto px-8 py-3 sm:text-sm text-base sm:py-3.5 font-semibold text-primary-50 transition-all duration-200 bg-primary-700 border border-transparent rounded-lg hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-900", role: "button" %>
           </div>
         </div>
       </div>
-    </main>
-  </div>
+
+      <div class="relative flex items-end px-4 py-16 bg-primary-700 sm:px-6 lg:pb-24 lg:px-8 xl:pl-12">
+        <div class="absolute inset-0">
+          <img class="opacity-20 object-cover w-full h-full" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/6/grid-pattern.svg" alt="" />
+        </div>
+
+        <div class='relative w-full max-w-lg mx-auto lg:max-w-none'>
+          <p class="text-lg font-bold text-primary-50">Featured Posts</p>
+          <div class="mt-6 space-y-5">
+            <div class="overflow-hidden transition-all duration-200 transform bg-primary-50 border border-primary-200 rounded-2xl hover:shadow-lg hover:-translate-y-1">
+              <div class="px-4 py-5 sm:p-5">
+                <div class="flex items-start lg:items-center">
+                  <a href="#" title="" class="shrink-0">
+                    <img class="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cvoer" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/6/thumbnail-1.png" alt="" />
+                  </a>
+
+                  <div class="flex-1 ml-4 lg:ml-6">
+                    <p class="text-xs font-medium text-primary-900 lg:text-sm">
+                      <a href="#" title="" class=""> Growth </a>
+                    </p>
+                    <p class="mt-2 text-sm font-bold text-primary-900 lg:text-lg group-hover:text-primary-600">
+                      <a href="#" title="" class=""> How a visual artist redefines success in graphic design </a>
+                    </p>
+                    <p class="mt-2 text-xs font-medium text-primary-500 lg:text-sm">April 09, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-hidden transition-all duration-200 transform bg-primary-50 border border-primary-200 rounded-2xl hover:shadow-lg hover:-translate-y-1">
+              <div class="px-4 py-5 sm:p-5">
+                <div class="flex items-start lg:items-center">
+                  <a href="#" title="" class="shrink-0">
+                    <img class="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cvoer" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/6/thumbnail-2.png" alt="" />
+                  </a>
+
+                  <div class="flex-1 ml-4 lg:ml-6">
+                    <p class="text-xs font-medium text-primary-900 lg:text-sm">
+                    <a href="#" title="" class=""> Growth </a>
+                    </p>
+                    <p class="mt-2 text-sm font-bold text-primary-900 lg:text-lg group-hover:text-primary-600">
+                    <a href="#" title="" class=""> How a visual artist redefines success in graphic design </a>
+                    </p>
+                    <p class="mt-2 text-xs font-medium text-primary-500 lg:text-sm">April 09, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-hidden transition-all duration-200 transform bg-primary-50 border border-primary-200 rounded-2xl hover:shadow-lg hover:-translate-y-1">
+              <div class="px-4 py-5 sm:p-5">
+                <div class="flex items-start lg:items-center">
+                  <a href="#" title="" class="shrink-0">
+                    <img class="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cvoer" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/6/thumbnail-3.png" alt="" />
+                  </a>
+
+                  <div class="flex-1 ml-4 lg:ml-6">
+                    <p class="text-xs font-medium text-primary-900 lg:text-sm">
+                    <a href="#" title="" class=""> Growth </a>
+                    </p>
+                    <p class="mt-2 text-sm font-bold text-primary-900 lg:text-lg group-hover:text-primary-600">
+                    <a href="#" title="" class=""> How a visual artist redefines success in graphic design </a>
+                    </p>
+                    <p class="mt-2 text-xs font-medium text-primary-500 lg:text-sm">April 09, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero: End -->
+
+  <!-- Features: Start -->
+  <section class="py-12 sm:py-16 lg:py-20 bg-primary-800">
+    <div class="py-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 xl:gap-x-32 gap-y-12">
+        <div>
+          <h2 class="tracking-tighter text-primary-100">
+            <span class="font-sans text-4xl md:text-6xl"> Cras in nisi, eget et tempor, </span>
+            <span class="font-serif text-5xl italic md:block md:text-7xl"> non tincidunt consectetur </span>
+          </h2>
+          <p class="mt-8 font-sans text-lg font-normal leading-8 text-opacity-50 text-primary-100">
+            Lorem convallis ligula mi tristique vel iaculis ultrices proin. Habitant dignissim volutpat accumsan egestas arcu vulputate. Nulla diam nisl, mi non luctus ut neque. Sit ac elementum, vivamus imperdiet.
+          </p>
+          <div class="mt-8">
+            <a
+              href="#"
+              title=""
+              class="
+              inline-flex
+              items-center
+              justify-center
+              px-5
+              py-2
+              font-sans
+              text-base
+              font-semibold
+              transition-all
+              duration-200
+              bg-transparent
+              border-2
+              rounded-full
+              sm:leading-8
+              text-primary-100
+              border-primary
+              hover:bg-primary-100
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-200
+              hover:text-black
+              sm:text-lg
+              focus:ring-offset-secondary
+              "
+              role="button"
+              >
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.0416 4.9192C7.37507 4.51928 6.5271 4.99939 6.5271 5.77669L6.5271 18.2232C6.5271 19.0005 7.37507 19.4806 8.0416 19.0807L18.4137 12.8574C19.061 12.469 19.061 11.5308 18.4137 11.1424L8.0416 4.9192Z"></path>
+              </svg>
+              Watch trailer
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div class="space-y-5">
+              <div class="overflow-hidden transition-all duration-200 border rounded-lg border-primary-200 hover:bg-primary-700">
+                <div class="px-4 py-5 sm:p-6 lg:p-8">
+                  <svg class="text-primary-50 h-11 w-11" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  <h3 class="mt-3 font-sans text-2xl font-normal text-primary-50">Slack Community</h3>
+                  <p class="mt-4 text-base font-normal text-opacity-50 text-primary-50">Non pretium mi, sagittis placerat. Elit risus malesuada ornare orci in. Tellus, tempor eget vitae aliquet suspendisse sed purus velit elit.</p>
+                </div>
+              </div>
+
+              <div class="overflow-hidden transition-all duration-200 border rounded-lg border-primary-200 hover:bg-primary-700">
+                <div class="px-4 py-5 sm:p-6 lg:p-8">
+                  <svg class="text-primary-50 h-11 w-11" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  <h3 class="mt-3 font-sans text-2xl font-normal text-primary-50">Slack Community</h3>
+                  <p class="mt-4 text-base font-normal text-opacity-50 text-primary-50">Non pretium mi, sagittis placerat. Elit risus malesuada ornare orci in. Tellus, tempor eget vitae aliquet suspendisse sed purus velit elit.</p>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-5 sm:mt-20">
+              <div class="overflow-hidden transition-all duration-200 border rounded-lg border-primary-200 hover:bg-primary-700">
+                <div class="px-4 py-5 sm:p-6 lg:p-8">
+                  <svg class="text-primary-50 h-11 w-11" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  <h3 class="mt-3 font-sans text-2xl font-normal text-primary-50">Slack Community</h3>
+                  <p class="mt-4 text-base font-normal text-opacity-50 text-primary-50">Non pretium mi, sagittis placerat. Elit risus malesuada ornare orci in. Tellus, tempor eget vitae aliquet suspendisse sed purus velit elit.</p>
+                </div>
+              </div>
+
+              <div class="overflow-hidden transition-all duration-200 border rounded-lg border-primary-200 hover:bg-primary-700">
+                <div class="px-4 py-5 sm:p-6 lg:p-8">
+                  <svg class="text-primary-50 h-11 w-11" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  <h3 class="mt-3 font-sans text-2xl font-normal text-primary-50">Slack Community</h3>
+                  <p class="mt-4 text-base font-normal text-opacity-50 text-primary-50">Non pretium mi, sagittis placerat. Elit risus malesuada ornare orci in. Tellus, tempor eget vitae aliquet suspendisse sed purus velit elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Features: End -->
+
+  <!-- Join CTA: Start -->
+  <section class="py-12 bg-primary-100 sm:py-16 lg:py-20">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-4xl text-primary-900 font-sans">Join 🌼 Secret Gardens community</h2>
+        <p class="max-w-md mx-auto mt-5 text-base font-normal text-primary-600 font-sans">With lots of unique blocks, you can easily build a page without coding. Build your nexdt landing page.</p>
+      </div>
+
+      <div class="relative max-w-lg mx-auto mt-14">
+        <div class="absolute -inset-x-2 -inset-y-5">
+          <div class="w-full h-full mx-auto rotate-180 opacity-30 blur-lg filter" style="background: linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)"></div>
+        </div>
+
+        <form action="#" method="POST" class="relative">
+          <input
+            type="email"
+            name=""
+            id=""
+            placeholder="Enter your email address"
+            class="block w-full px-5 py-6 text-base font-normal text-black placeholder-primary-600 bg-primary-50 border border-primary-300 rounded-xl focus:border-black focus:ring-1 focus:ring-black font-pj focus:outline-none"
+            required
+          />
+
+          <div class="mt-4 sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-3">
+            <button
+              type="submit"
+              class="
+              inline-flex
+              items-center
+              justify-center
+              w-full
+              px-8
+              py-4
+              text-base
+              font-bold
+              text-primary-50
+              transition-all
+              duration-200
+              bg-primary-700
+              border border-transparent
+              sm:w-auto sm:py-3
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-900
+              font-pj
+              hover:bg-opacity-90
+              rounded-xl
+              "
+              >
+              Get started now
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <p class="mt-6 text-sm font-normal text-center text-primary-500 font-sans">No ads. No spam. No commitments.</p>
+    </div>
+  </section>
+  <!-- Join CTA: End -->
 </div>

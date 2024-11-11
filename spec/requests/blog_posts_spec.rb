@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Blog Posts", type: :request do
   before do
-    @blog_post = create(:blog_post)
+    @blog_post = create(:blog_post, :published)
     @user = create(:user)
   end
 

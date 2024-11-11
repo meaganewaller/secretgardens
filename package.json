@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "tailwindcss-debug-screens": "^2.2.1"
+  }
+}

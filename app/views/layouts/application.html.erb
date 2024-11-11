@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if user_signed_in? && current_page?(root_path) %>
+    <% end %>
+    <meta charset="utf-8">
     <%= metamagic site: "#{I18n.t('title')}", title: [:site, :title], separator: " · " %>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,12 +21,16 @@
     <%= render "shared/script_tags" %>
   </head>
 
-  <body>
+  <body class="dark:bg-gray-900 bg-primary-200 debug-screens" data-user-status="<%= j(user_logged_in_status) %>" data-locale="<%= j(I18n.locale) %>">
+    <div id="body-styles">
+    </div>
     <main class="container mx-auto mt-14 px-6">
       <%= render "shared/impersonator" %>
       <%= render "shared/flash" %>
       <%= render "shared/header" %>
       <%= yield %>
+
+      <%= render "shared/footer" %>
     </main>
   </body>
 </html>

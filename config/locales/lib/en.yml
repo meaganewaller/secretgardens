@@ -1,0 +1,41 @@
+---
+en:
+  lib:
+    constants:
+      settings:
+        general:
+          contact_email:
+            description: Used for contact links. Please provide an email address where users can get in touch with you or your team.
+          favicon:
+            description: Used as the site favicon
+          logo_png:
+            description: Used as a secondary logo in places like the sign in modals, onboarding, Apple touch icons. Recommended minimum of 512x512px
+          logo_svg:
+            description: This is the logo currently used on the upper left-hand corner of your Forem. However, after the release it will be deprecated in favor of the Logo above.
+        user_experience:
+          default_font:
+            description: Determines the default reading font (registered users can change this in their UX settings)
+          default_locale:
+            description: Determines that default language and localization for the site.
+          cover_image_height:
+            description: Determines the height of cover images, relative to a width of 1000px
+            placeholder: '420'
+          cover_image_fit:
+            description: Determines the cropping strategy for cover images
+            placeholder: crop, limit
+          home_feed:
+            description: Minimum score needed for a post to show up on the unauthenticated home page.
+          index_minimum_date:
+            description: Minimum date needed for a post to be indexed by search engines (Unix Timestamp).
+          index_minimum_score:
+            description: Minimum score needed for a post to be indexed by search engines.
+          primary_hex:
+            description: Determines background/border of buttons etc. Must be dark enough to contrast with white text.
+          tag_feed:
+            description: Minimum score needed for a post to show up on default tag page.
+          head_content:
+            description: Content that will be appended to the bottom of the head tag on every page (WARNING — This will cache within the page request unevenly. Proceed with care).
+            placeholder: 'Leave empty if you do not want to add anything.'
+          bottom_of_body_content:
+            description: Content that will be appended to the bottom of the body tag on every page (WARNING — This will cache within the page request unevenly. Proceed with care).
+            placeholder: 'Leave empty if you do not want to add anything.'

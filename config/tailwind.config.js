@@ -3,6 +3,7 @@ const colors = require('tailwindcss/colors')
 
 
 module.exports = {
+  darkMode: 'selector',
   content: [
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
@@ -27,5 +28,6 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
+    require('tailwindcss-debug-screens'),
   ]
 }

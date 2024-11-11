@@ -1,0 +1,15 @@
+---
+en:
+  errors:
+    authentication:
+      errors:
+        suspended: It appears that your previous %{community_name} account was suspended. As such, we've taken measures to prevent you from creating a new account with %{community_name} and its community. If you think that there has been a mistake, please email us at %{community_email}, and we will take another look.
+  policies:
+    application_policy:
+      must_be_logged_in: must be logged in
+      you_must_be_logged_in: You must be logged in
+      your_account_is_suspended: Your account is suspended
+  uploaders:
+    base_uploader:
+      too_many_frames: GIF contains too many frames. Max frame count allowed is %{frame_max}.
+      timeout: Image processing timed out.
