@@ -1,13 +1,26 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, except: %i[index new create]
-  before_action only: [:new, :edit, :create, :update, :destroy] do
-    authenticate_admin!(alert_message: 'You are not authorized')
+  include ApplicationHelper
+
+  before_action except: [:index, :new, :show] do
+    authenticate_user!
   end
+  before_action :set_blog_post, only: [:edit, :show, :update, :destroy]
+  # after_action :verify_authorized
+  # before_action only: [:new, :edit, :create, :update, :destroy] do
+  #   authenticate_admin!(alert_message: 'You are not authorized')
+  # end
 
   # GET /blog
   def index
     @blog_posts = BlogPost.published.order(created_at: :asc)
+    # @latest = request.path == latest_feed_path
+    @blog_posts = if params[:username]
+                    handle_user_or_guild_feed
+                  else
+                    @blog_posts.includes(:user)
+                  end
     @drafts = BlogPost.unpublished.order(created_at: :desc)
+    not_found unless @blog_posts&.any? || @drafts&.any?
   end
 
   # GET /blog/:slug
@@ -51,10 +64,25 @@ class BlogPostsController < ApplicationController
   private
 
   def set_blog_post
-    @blog_post = params[:blog_post].present? ? BlogPost.find(params[:id]) : BlogPost.find_by(slug: params[:slug])
+    owner = User.find_by(username: params[:username]) || Guild.find_by(slug: params[:username])
+    found_post = if params[:slug] && owner
+                   owner.blog_posts.find_by(slug: params[:slug])
+                 else
+                   BlogPost.includes(:user).find_by(slug: params[:slug])
+                 end
+
+    @blog_post = found_post || not_found
   end
 
   def blog_post_params
     params.require(:blog_post).permit(:title, :slug, :description, :body, :cover_image, :user_id, :published)
+  end
+
+  def handle_user_or_guild_feed
+    if (@user = User.find_by(username: params[:username]))
+      @blog_posts = @blog_posts.where(user_id: @user.id)
+    elsif (@user = Guild.find_by(slug: params[:username]))
+      @blog_posts = @blog_posts.where(guild_id: @user.id).includes(:user)
+    end
   end
 end
