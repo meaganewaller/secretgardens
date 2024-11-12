@@ -15,13 +15,13 @@ RSpec.describe BlogPost, type: :model do
 
   describe 'scopes' do
     it 'returns published blog posts' do
-      post = create(:blog_post, slug: 'basic-slug') # published by default
+      post = create(:blog_post, slug: 'basic-slug', published: true) # unpublished by default
       expect(BlogPost.published).to include(post)
     end
 
-    it 'returns draft blog posts' do
-      post = create(:blog_post, slug: 'basic-slug', draft: true)
-      expect(BlogPost.drafts).to include(post)
+    it 'returns unpublished blog posts' do
+      post = create(:blog_post, slug: 'basic-slug', published: false)
+      expect(BlogPost.unpublished).to include(post)
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe BlogPost, type: :model do
     end
 
     it 'works with improper input data' do
-      post = create(:blog_post, slug: 'Complex     slug HERE')
+      post = create(:blog_post, slug: 'Complex     slug HERE', published: true)
       expect(post.slug).to eql 'complex-slug-here'
     end
 

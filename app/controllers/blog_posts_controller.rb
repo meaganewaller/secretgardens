@@ -7,7 +7,7 @@ class BlogPostsController < ApplicationController
   # GET /blog
   def index
     @blog_posts = BlogPost.published.order(created_at: :asc)
-    @drafts = BlogPost.drafts.order(created_at: :desc)
+    @drafts = BlogPost.unpublished.order(created_at: :desc)
   end
 
   # GET /blog/:slug
@@ -15,7 +15,7 @@ class BlogPostsController < ApplicationController
 
   # GET /blog/new
   def new
-    @blog_post = BlogPost.new
+    @blog_post = BlogPost.new(user: current_user)
   end
 
   # GET /blog/:slug/edit
@@ -34,6 +34,7 @@ class BlogPostsController < ApplicationController
 
   # PATCH /blog/:slug
   def update
+    blog_post_params.merge(user_id: current_user.id)
     if @blog_post.update(blog_post_params)
       redirect_to blog_post_path(@blog_post.slug), notice: "Blog post was successfully updated."
     else
@@ -54,6 +55,6 @@ class BlogPostsController < ApplicationController
   end
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :slug, :description, :body, :cover_image, :draft)
+    params.require(:blog_post).permit(:title, :slug, :description, :body, :cover_image, :user_id, :published)
   end
 end

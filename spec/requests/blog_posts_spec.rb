@@ -66,7 +66,7 @@ RSpec.describe "Blog Posts", type: :request do
       @user.update(admin: true)
       sign_in(@user)
 
-      post blog_posts_path, params: { blog_post: { title: 'Some post', description: 'description goes here', slug: 'some-post', body: 'here goes nothing' } }
+      post blog_posts_path, params: { blog_post: { title: 'Some post', description: 'description goes here', slug: 'some-post', body: 'here goes nothing', user_id: @user.id } }
       expect(response).to redirect_to(blog_post_path(BlogPost.last.slug))
 
       follow_redirect!
@@ -116,6 +116,8 @@ RSpec.describe "Blog Posts", type: :request do
       expect(response.status).to eql 422
       expect(response.body).to include 'errors prevented this post from being saved'
       expect(response.body).to include "Title can&#39;t be blank"
+      expect(response.body).to include "Description can&#39;t be blank"
+      expect(response.body).to include "Body can&#39;t be blank"
     end
   end
 

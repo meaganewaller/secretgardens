@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_10_200447) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_12_014723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,6 +59,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_10_200447) do
     t.boolean "draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "published", default: false
+    t.bigint "user_id"
+    t.bigint "guild_id"
+    t.index ["guild_id"], name: "index_blog_posts_on_guild_id"
+    t.index ["user_id"], name: "index_blog_posts_on_user_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -74,6 +79,30 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_10_200447) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "guild_memberships", force: :cascade do |t|
+    t.bigint "guild_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guild_id"], name: "index_guild_memberships_on_guild_id"
+    t.index ["user_id"], name: "index_guild_memberships_on_user_id"
+  end
+
+  create_table "guilds", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "summary"
+    t.string "url"
+    t.datetime "last_blog_post_at", precision: nil, default: "2024-01-01 05:00:00"
+    t.datetime "latest_blog_post_updated_at", precision: nil
+    t.datetime "profile_updated_at", precision: nil, default: "2024-01-01 05:00:00"
+    t.string "slug"
+    t.string "tag_line"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_guilds_on_name", unique: true
+    t.index ["slug"], name: "index_guilds_on_slug", unique: true
   end
 
   create_table "mail_logs", force: :cascade do |t|
@@ -126,5 +155,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_10_200447) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "blog_posts", "guilds"
+  add_foreign_key "blog_posts", "users"
+  add_foreign_key "guild_memberships", "guilds"
+  add_foreign_key "guild_memberships", "users"
   add_foreign_key "profiles", "users"
 end

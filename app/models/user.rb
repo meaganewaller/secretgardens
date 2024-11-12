@@ -3,19 +3,10 @@ class User < ApplicationRecord
   include Onboardable
   include Billable
 
-  concerning :Profiles do
-    included do
-      has_one :profile, dependent: :delete
-
-      attr_accessor :_skip_creating_profile
-
-      after_create_commit unless: :_skip_creating_profile do
-        Profile.find_or_create_by(user: self)
-      rescue ActiveRecord::RecordNotUnique
-        Rails.logger.warn("Profile already exists for user #{id}")
-      end
-    end
-  end
+  has_one :profile, dependent: :delete
+  has_many :blog_posts, dependent: :destroy
+  has_many :guild_memberships, dependent: :delete_all
+  has_many :guilds, through: :guild_memberships
 
   extend UniqueAcrossModels
   USERNAME_MAX_LENGTH = 30
@@ -28,7 +19,7 @@ class User < ApplicationRecord
   before_validation :downcase_email
   # before_validation :set_username
 
-  validate :password_matches_confirmation, if: :encrypted_password_changed?
+  validate :password_matches_confirmation, if: :encrypted_password_changed?, on: :update
 
   def tag_line
     profile.summary
@@ -44,28 +35,17 @@ class User < ApplicationRecord
 
   # :nocov:
   def self.ransackable_attributes(*)
-    ["id", "admin", "created_at", "updated_at", "email", "username", "stripe_customer_id", "stripe_subscription_id", "paying_customer"]
+    ["id", "admin", "created_at", "updated_at", "email", "username", "stripe_customer_id", "stripe_subscription_id", "paying_customer", "guilds"]
   end
 
   def self.ransackable_associations(_auth_object)
     []
   end
-  # :nocov:
 
-  # def set_username
-  #   self.username = username&.downcase.presence || generate_username
-  # end
-  #
-  # def auth_provider_usernames
-  #   attributes
-  #     .with_indifferent_access
-  #     .slice(*Authentication::Providers.username_fields)
-  #     .values.compact || []
-  # end
-  #
-  # def generate_username
-  #   Users::UsernameGenerator.call(auth_provider_usernames)
-  # end
+  def no_published_content?
+    blog_posts.published.empty?
+  end
+  # :nocov:
 
   private
 
@@ -79,4 +59,7 @@ class User < ApplicationRecord
     errors.add(:password, I18n.t("models.user.password_not_matched"))
   end
 
+  def guild_member?(guild)
+    guild_memberships.member.exists?(guild:)
+  end
 end

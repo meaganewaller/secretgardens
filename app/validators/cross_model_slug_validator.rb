@@ -5,7 +5,7 @@ class CrossModelSlugValidator < ActiveModel::EachValidator
     return if value.blank?
 
     correct_format?(record, attribute, value)
-    allowed_subdirectory_count?(record, attribute, value)
+    # allowed_subdirectory_count?(record, attribute, value)
     not_on_reserved_list?(record, attribute, value)
     unique_across_models?(record, attribute, value)
   end
@@ -32,9 +32,9 @@ class CrossModelSlugValidator < ActiveModel::EachValidator
     record.errors.add(attribute, I18n.t("validators.cross_model_slug_validator.is_taken"))
   end
 
-  def allowed_subdirectory_count?(record, attribute, value)
-    record.errors.add(attribute, I18n.t("validators.cross_model_slug_validator.too_many_subdirectories"))
-  end
+  # def allowed_subdirectory_count?(record, attribute, value)
+  #   record.errors.add(attribute, I18n.t("validators.cross_model_slug_validator.too_many_subdirectories"))
+  # end
 
   def already_exists?(value)
     CrossModelSlug.exists?(value.downcase)

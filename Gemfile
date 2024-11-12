@@ -39,6 +39,8 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rubocop', require: false # code styling
   gem 'rubocop-capybara', require: false
   gem 'rubocop-factory_bot', require: false
@@ -53,8 +55,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-callback-matchers'
