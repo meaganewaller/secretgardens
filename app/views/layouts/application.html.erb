@@ -28,7 +28,10 @@
       <%= render "shared/impersonator" %>
       <%= render "shared/flash" %>
       <%= render "shared/header" %>
-      <%= yield %>
+
+      <div class="py-10">
+        <%= yield %>
+      </div>
 
       <%= render "shared/footer" %>
     </main>

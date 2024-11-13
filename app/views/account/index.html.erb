@@ -1,43 +1,98 @@
-<%= render partial: "shared/heading", locals: { title: "#{I18n.t('account.index.heading.title')}" } %>
+<div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]" data-controller="tabs" data-tabs-active-class="bg-gray-900 text-gray-100" data-tabs-default-tab-value="tab1">
+  <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
+    <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
+      <h2 class="pl-3 mb-4 text-2xl font-semibold">Settings</h2>
 
-<div class="max-w-xl mx-auto sm:py-12">
-  <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900"><%= I18n.t("account.subscription") %></h3>
-  <div class="flex">
-    <div class="flex-auto">
-      <%= I18n.t("account.billing_status") %>: <%= current_user.paying_customer? ? "#{I18n.t('account.active')}" : "#{I18n.t('account.inactive')}" %><br>
+      <%=
+        button_tag "Public Profile", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab1", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "profile" } %>
+      <%= button_tag "Account Settings", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab2", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "settings" } %>
+      <%= button_tag "Guilds", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab3", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "guilds" } %>
+      <%= button_tag "Notifications", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab4", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "notifications" } %>
+      <%= button_tag "Subscription", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab5", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "subscriptions" } %>
+      <%= button_tag "Billing", class: "flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full", id: "tab6", data: { "tabs-target": "btn", action: "click->tabs#select", "tab-id": "billing" } %>
     </div>
-    <div class="flex-shrink">
-      <%= button_to "#{I18n.t('account.manage')} >>", billing_portal_index_path, method: :post, data: { turbo: false }, class: "font-medium text-primary-500" %>
-    </div>
-  </div>
+  </aside>
+  <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4 rounded-2xl">
+    <div class="p-2 md:p-4">
+      <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg" data-tabs-target="tab" data-tab-id="tab1">
+        <h2 class="pl-6 text-2xl font-bold sm:text-xl">Public Profile</h2>
 
-  <%= form_for(current_user, url: account_path(current_user.id), method: 'patch', html: {class: "mt-8", autocomplete: 'off'}) do |f| %>
-    <div>
-      <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900"><%= I18n.t("account.profile.title") %></h3>
-      <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
-        <label for="email" class="block text-xs font-medium text-gray-900"><%= I18n.t("account.profile.email") %></label>
-        <input type="text" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="<%= current_user.email %>">
+        <div class="grid max-w-2xl mx-auto mt-8">
+          <div class="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+            <img class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
+                 src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                 alt="Bordered avatar">
+
+            <div class="flex flex-col space-y-5 sm:ml-8">
+              <button type="button"
+                      class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
+                Change picture
+              </button>
+              <button type="button"
+                      class="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
+                Delete picture
+              </button>
+            </div>
+          </div>
+
+          <div class="items-center mt-8 sm:mt-14 text-[#202142]">
+            <%= form_for(current_user, url: account_path(current_user.id), method: 'patch', html: { autocomplete: 'on' }) do |f| %>
+              <div class="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
+                <div class="w-full">
+                  <%= f.label "first_name", class: "block mb-2 text-sm font-medium text-indigo-900 dark:text-white" do %>
+                    Your first name
+                  <% end %>
+                  <%= f.text_field "first_name", class: "bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5", placeholder: "Your first name", value: "Jane", required: true %>
+                </div>
+                <div class="w-full">
+                  <%= f.label "last_name", class: "block mb-2 text-sm font-medium text-indigo-900 dark:text-white" do %>
+                    Your last name
+                  <% end %>
+                  <%= f.text_field "last_name", class: "bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5", placeholder: "Your first name", value: "Jones", required: true %>
+                </div>
+              </div>
+
+              <div class="mb-2 sm:mb-6">
+                <%= f.label :email, class: "block mb-2 text-sm font-medium text-indigo-900 dark:text-white" do %>
+                  Your email
+                <% end %>
+                <%= f.email_field :email, class: "bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5", placeholder: "youremail@email.com", required: true %>
+              </div>
+
+              <div class="mb-2 sm:mb-6">
+                <%= f.label :username, class: "block mb-2 text-sm font-medium text-indigo-900 dark:text-white" do %>
+                  Your username
+                <% end %>
+                <%= f.text_field :username, class: "bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5", placeholder: "yourusername", required: true %>
+              </div>
+
+              <div class="mb-2 sm:mb-6">
+                <%= f.label "bio", class: "block mb-2 text-sm font-medium text-indigo-900 dark:text-white" %>
+                <%= f.text_field "bio", class: "bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5", placeholder: "Your bio", value: "Your bio" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
-        <label for="email" class="block text-xs font-medium text-gray-900"><%= I18n.t("account.profile.username") %></label>
-        <input type="text" required="true" name="user[username]" id="user_username" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="<%= current_user.username %>">
-      </div>
+      <div data-tabs-target="tab" id="tab2" class="hidden">
+        <h2 class="pl-6 text-2xl font-bold sm:text-xl">Account Settings</h2>
 
-      <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
-        <label for="password" class="block text-xs font-medium text-gray-900"><%= I18n.t("account.profile.password") %></label>
-        <input type="password" autocomplete="new-password" name="user[password]" id="user_password" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
+        <div class="grid max-w-2xl mx-auto mt-8">
+          <div class="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+            <div class="flex flex-col space-y-5 sm:ml-8">
+              <button type="button"
+                      class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
+                Change password
+              </button>
+              <button type="button"
+                      class="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
+                Delete account
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <button type="submit" data-turbo="false" class="mt-4 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-          <!-- Heroicon name: solid/lock-closed -->
-          <svg class="h-5 w-5 text-primary-500 group-hover:text-primary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
-          </svg>
-        </span>
-        <%= I18n.t("account.profile.save") %>
-      </button>
     </div>
-  <% end %>
+  </main>
 </div>
