@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% if user_signed_in? && current_page?(root_path) %>
+    <% end %>
+    <meta charset="utf-8">
+    <%= metamagic site: "#{I18n.t('title')}", title: [:site, :title], separator: " · " %>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- extra Tailwind components -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+
+    <!-- app styles -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <%= render "shared/script_tags" %>
+  </head>
+
+  <body class="dark:bg-gray-900 bg-primary-200 debug-screens" data-user-status="<%= j(user_logged_in_status) %>" data-locale="<%= j(I18n.locale) %>">
+    <div id="body-styles">
+    </div>
+    <main class="mx-auto">
+      <%= render "shared/impersonator" %>
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

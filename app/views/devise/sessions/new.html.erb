@@ -1,46 +1,84 @@
-<div class="min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full">
-    <%= render 'devise/shared/devise_heading', title: 'Log in to your account' %>
-    <%= render "devise/shared/devise_sub_heading", subtitle: "Welcome back! Please enter your details." %>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mt-8"}) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-      <div class="mb-2">
-        <input aria-label="Email address or username" autofocus name="user[login]" id="user_login" type="text" required class="my-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-50" placeholder="Email address or username" />
-      </div>
-      <div class="mb-2">
-        <input aria-label="Password" name="user[password]" id="user_password" type="password" required class="my-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-50" placeholder="Password" />
+<section class="py-12 bg-gray-900 sm:py-16 lg:py-20 xl:py-24 max-h-screen h-screen">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 xl:gap-x-36">
+      <div>
+        <img class="object-cover w-full h-full rounded-2xl" src="https://landingfoliocom.imgix.net/store/collection/saasui/images/sign-in/2/girl-with-laptop.png" alt="" />
       </div>
 
-      <div class="mt-6 flex items-center justify-between">
-        <div class="flex items-center">
-          <input name="user[remember_me]" id="user_remember_me" type="checkbox" class="form-checkbox h-4 w-4 transition duration-150 ease-in-out text-primary-700 focus:border-primary-300 focus:ring-primary-500 rounded" />
-          <label for="user_remember_me" class="ml-2 block text-sm leading-5 text-gray-900">
-            Remember Me
-          </label>
+      <div>
+        <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">Welcome back 👋</h2>
+        <p class="mt-4 text-base font-normal leading-7 text-gray-400 lg:text-lg lg:mt-6 lg:leading-8">Clarity gives you the blocks and components you need to create a truly professional website.</p>
+
+        <div class="mt-10 hidden">
+          <a
+              href="#"
+              title=""
+              class="inline-flex items-center justify-center w-full px-6 py-4 text-base font-medium text-white transition-all duration-200 bg-gray-800 border border-transparent rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 focus:ring-offset-gray-900"
+              role="button"
+              >
+              <svg class="w-6 h-6 mr-3" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M23.5194 9.91355L13.7299 9.91309C13.2977 9.91309 12.9473 10.2634 12.9473 10.6957V13.823C12.9473 14.2552 13.2977 14.6056 13.7299 14.6056H19.2427C18.639 16.1722 17.5124 17.4842 16.0749 18.3178L18.4255 22.387C22.1963 20.2062 24.4256 16.3799 24.4256 12.0965C24.4256 11.4866 24.3806 11.0506 24.2907 10.5597C24.2224 10.1867 23.8985 9.91355 23.5194 9.91355Z"
+                    fill="#167EE6"
+                    />
+                <path d="M12.4241 19.3043C9.72629 19.3043 7.37109 17.8303 6.10616 15.649L2.03711 17.9944C4.10782 21.5832 7.98694 24 12.4241 24C14.6009 24 16.6548 23.4139 18.4242 22.3925V22.387L16.0735 18.3177C14.9983 18.9414 13.754 19.3043 12.4241 19.3043Z" fill="#12B347" />
+                <path d="M18.4258 22.3925V22.387L16.0752 18.3177C14.9999 18.9413 13.7558 19.3043 12.4258 19.3043V24C14.6025 24 16.6566 23.4139 18.4258 22.3925Z" fill="#0F993E" />
+                <path d="M5.12146 12C5.12146 10.6702 5.48437 9.42613 6.10786 8.35096L2.03881 6.00562C1.01182 7.76938 0.425781 9.81773 0.425781 12C0.425781 14.1824 1.01182 16.2307 2.03881 17.9945L6.10786 15.6491C5.48437 14.5739 5.12146 13.3298 5.12146 12Z" fill="#FFD500" />
+                <path
+                    d="M12.4241 4.69566C14.1834 4.69566 15.7994 5.32078 17.0616 6.36061C17.373 6.61711 17.8256 6.59859 18.1108 6.31336L20.3266 4.09758C20.6502 3.77395 20.6272 3.24422 20.2815 2.94431C18.1667 1.10967 15.4151 0 12.4241 0C7.98694 0 4.10782 2.41673 2.03711 6.00558L6.10616 8.35092C7.37109 6.16969 9.72629 4.69566 12.4241 4.69566Z"
+                    fill="#FF4B26"
+                    />
+                <path d="M17.0632 6.36061C17.3746 6.61711 17.8273 6.5986 18.1125 6.31336L20.3282 4.09758C20.6518 3.77395 20.6288 3.24422 20.2831 2.94431C18.1683 1.10963 15.4168 0 12.4258 0V4.69566C14.185 4.69566 15.801 5.32078 17.0632 6.36061Z" fill="#D93F21" />
+              </svg>
+            Sign in with Google
+          </a>
         </div>
 
-        <div class="text-sm leading-5">
-          <%= link_to 'Forgot password?', new_user_password_path, class: 'font-medium hover:text-gray-500 focus:outline-none focus:underline transition ease-in-out duration-150' %>
-        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-12 space-y-6" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div>
+            <%= f.label :login, class: "text-sm font-normal text-gray-200" do %>
+              Email or Username
+            <% end %>
+            <div class="mt-2">
+              <%= f.text_field :login, autofocus: true, autocomplete: "email", class: "block w-full px-6 py-4 text-base font-normal text-white placeholder-gray-400 bg-transparent border border-gray-700 rounded-full focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.label :password, class: "text-sm font-normal text-gray-200" %>
+            <div class="mt-2">
+              <%= f.password_field :password, autocomplete: "current-password", class: "block w-full px-6 py-4 text-base font-normal text-white placeholder-gray-400 bg-transparent border border-gray-700 rounded-full focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500" %>
+            </div>
+          </div>
+
+          <div class="relative flex items-start justify-between">
+            <div class="flex items-center h-5">
+              <%= f.check_box :remember_me, class: "w-4 h-4 text-primary-600 border border-gray-200 rounded focus:outline-none focus:ring-primary-600" %>
+              <div class="ml-3 text-sm">
+                <%= f.label :remember_me, class: "text-sm font-normal text-white" do %>
+                  Remember me
+                <% end %>
+              </div>
+            </div>
+
+            <div class="items-end text-sm leading-5">
+              <%= link_to "Forgot password?", new_user_password_path, class: "font-medium text-primary-500 hover:underline" %>
+            </div>
+          </div>
+
+          <button type="submit" data-turbo="false" class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <svg class="h-5 w-5 transition ease-in-out duration-150" fill="white" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Login
+          </button>
+        <% end %>
+        <p class="mt-6 text-sm font-normal text-gray-500">Don't have an account? <%= link_to "Create free account", new_user_registration_path, class: "text-sm font-semibold text-primary-500 hover:underline" %></p>
       </div>
 
-      <div class="mt-6">
-        <button type="submit" data-turbo="false" class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <svg class="h-5 w-5 transition ease-in-out duration-150" fill="white" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-            </svg>
-          </span>
-          Login
-        </button>
-      </div>
-    <% end %>
-
-    <div class="mt-6 text-center text-gray-400">
-      Don't have an account?
-      <%= link_to 'Sign up', new_user_registration_path, class: 'font-medium text-gray-500 hover:text-gray-600 focus:outline-none focus:underline transition ease-in-out duration-150' %>
     </div>
   </div>
-</div>
+</section>
