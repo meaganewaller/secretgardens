@@ -1,41 +1,47 @@
 import { Controller } from "@hotwired/stimulus";
 
+// Connects to data-controller="tabs"
 export default class extends Controller {
   static classes = ["active"];
   static targets = ["btn", "tab"];
   static values = { defaultTab: String };
 
   connect() {
-    this.tabTargets.map((x) => (x.hidden = true));
-    let selectedTab = this.tabTargets.find(
-      (element) => element.id == this.defaultTabValue,
-    );
-    selectedTab.hidden = false;
-
-    let selectedBtn = this.btnTargets.find(
-      (element) => element.dataset.tab == this.defaultTabValue,
-    );
-    selectedBtn.classList.add(this.activeClass);
+    this.updateClasses(this.defaultTabValue);
+    document.addEventListener("turbo:load", this.onTurboLoad);
   }
 
-  // switch between tabs
-  // add to your buttons: data-action="click->tabs#select"
-  select(event) {
-    // find tab matching (with same id as) the clicked btn
-    let selectedTab = this.tabTargets.find(
-      (element) => element.id === event.currentTarget.id,
-    );
-    if (selectedTab.hidden) {
-      // hide everything
-      this.tabTargets.map((x) => (x.hidden = true)); // hide all tabs
-      this.btnTargets.map((x) => x.classList.remove(...this.activeClasses)); // deactive all btns
+  disconnect() {
+    ducoment.removeEventListener("turbo:load", this.onTurboLoad);
+  }
 
-      // then show selected
-      selectedTab.hidden = false; // show current tab
-      event.currentTarget.classList.add(...this.activeClasses); // activate current button
-    } else {
-      this.tabTargets.map((x) => (x.hidden = true));
-      this.btnTargets.map((x) => x.classList.remove(...this.activeClasses));
+  select(event) {
+    const element = event.target.closest("[data-id]");
+    if (element) {
+      this.updateClasses(element.dataset.id);
     }
   }
+
+  onTurboLoad = () => {
+    this.updateClasses(this.defaultTabValue);
+  };
+
+  updateClasses = (selectedId) => {
+    this.btnTargets.forEach((btn) =>
+      btn.classList.remove(...this.activeClasses),
+    );
+    this.tabTargets.forEach((tab) => tab.classList.add("hidden"));
+
+    this.btnTargets.forEach((btn) => {
+      if (btn.dataset.id === selectedId) {
+        btn.classList.add(...this.activeClasses);
+      }
+    });
+
+    this.tabTargets.forEach((tab) => {
+      if (tab.id === selectedId) {
+        tab.classList.remove("hidden");
+      }
+    });
+  };
 }
